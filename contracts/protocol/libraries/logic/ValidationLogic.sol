@@ -34,28 +34,28 @@ library ValidationLogic {
   uint256 public constant REBALANCE_UP_USAGE_RATIO_THRESHOLD = 0.95 * 1e27; //usage ratio of 95%
 
   /**
-   * @dev Validates a deposit action
-   * @param reserve The reserve object on which the user is depositing
-   * @param amount The amount to be deposited
+   * @dev 验证存款操作
+   * @param reserve 用户存款的储备对象
+   * @param amount 需存入的金额
    */
   function validateDeposit(DataTypes.ReserveData storage reserve, uint256 amount) external view {
     (bool isActive, bool isFrozen, , ) = reserve.configuration.getFlags();
 
-    require(amount != 0, Errors.VL_INVALID_AMOUNT);
-    require(isActive, Errors.VL_NO_ACTIVE_RESERVE);
-    require(!isFrozen, Errors.VL_RESERVE_FROZEN);
+    require(amount != 0, Errors.VL_INVALID_AMOUNT); // '存款金额必须大于0'
+    require(isActive, Errors.VL_NO_ACTIVE_RESERVE); // '操作需要积极的储备'
+    require(!isFrozen, Errors.VL_RESERVE_FROZEN); // '操作不能因为储备被冻结而执行'
   }
 
   /**
-   * @dev Validates a withdraw action
-   * @param reserveAddress The address of the reserve
-   * @param amount The amount to be withdrawn
-   * @param userBalance The balance of the user
-   * @param reservesData The reserves state
-   * @param userConfig The user configuration
-   * @param reserves The addresses of the reserves
-   * @param reservesCount The number of reserves
-   * @param oracle The price oracle
+   * @dev 验证提款操作
+   * @param reserve 用户提款的储备对象
+   * @param amount 需提款的金额
+   * @param userBalance 用户余额
+   * @param reservesData 所有储备状态
+   * @param userConfig 用户配置
+   * @param reserves 所有储备地址
+   * @param reservesCount 储备数量
+   * @param oracle 价格 oracle
    */
   function validateWithdraw(
     address reserveAddress,

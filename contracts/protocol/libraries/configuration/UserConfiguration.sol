@@ -31,10 +31,10 @@ library UserConfiguration {
   }
 
   /**
-   * @dev Sets if the user is using as collateral the reserve identified by reserveIndex
-   * @param self The configuration object
-   * @param reserveIndex The index of the reserve in the bitmap
-   * @param usingAsCollateral True if the user is usin the reserve as collateral, false otherwise
+   * @dev 设置用户是否使用 reserveIndex 标识的储备作为抵押品
+   * @param self 用户配置对象
+   * @param reserveIndex 储备索引
+   * @param usingAsCollateral 如果用户使用储备作为抵押品则为 True，否则为 false
    **/
   function setUsingAsCollateral(
     DataTypes.UserConfigurationMap storage self,

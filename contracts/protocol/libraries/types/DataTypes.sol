@@ -2,28 +2,28 @@
 pragma solidity 0.6.12;
 
 library DataTypes {
-  // refer to the whitepaper, section 1.1 basic concepts for a formal description of these properties.
+  // 请参阅白皮书第 1.1 节基本概念，了解这些属性的正式描述。
   struct ReserveData {
-    //stores the reserve configuration
+    //存储备用配置
     ReserveConfigurationMap configuration;
-    //the liquidity index. Expressed in ray
+    //流动性指数。以射线表示
     uint128 liquidityIndex;
-    //variable borrow index. Expressed in ray
+    //变量借位指数。以射线表示
     uint128 variableBorrowIndex;
-    //the current supply rate. Expressed in ray
+    //当前供给率。以射线表示
     uint128 currentLiquidityRate;
-    //the current variable borrow rate. Expressed in ray
+    //当前可变借贷利率。以射线表示
     uint128 currentVariableBorrowRate;
-    //the current stable borrow rate. Expressed in ray
+    //当前稳定借贷利率。以射线表示
     uint128 currentStableBorrowRate;
     uint40 lastUpdateTimestamp;
-    //tokens addresses
+    //代币地址
     address aTokenAddress;
     address stableDebtTokenAddress;
     address variableDebtTokenAddress;
-    //address of the interest rate strategy
+    //利率策略演讲
     address interestRateStrategyAddress;
-    //the id of the reserve. Represents the position in the list of the active reserves
+    //储备的ID。表示在活跃储备列表中的位置
     uint8 id;
   }
 

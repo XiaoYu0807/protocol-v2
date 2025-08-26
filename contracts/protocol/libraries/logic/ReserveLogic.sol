@@ -104,8 +104,8 @@ library ReserveLogic {
   }
 
   /**
-   * @dev Updates the liquidity cumulative index and the variable borrow index.
-   * @param reserve the reserve object
+   * @dev 更新流动性累积指数和变量借入指数。
+   * @param reserve 储备对象
    **/
   function updateState(DataTypes.ReserveData storage reserve) internal {
     uint256 scaledVariableDebt =
@@ -190,10 +190,10 @@ library ReserveLogic {
   }
 
   /**
-   * @dev Updates the reserve current stable borrow rate, the current variable borrow rate and the current liquidity rate
-   * @param reserve The address of the reserve to be updated
-   * @param liquidityAdded The amount of liquidity added to the protocol (deposit or repay) in the previous action
-   * @param liquidityTaken The amount of liquidity taken from the protocol (redeem or borrow)
+   * @dev 更新储备当前稳定借款利率、当前可变借款利率和当前流动性利率
+   * @param reserve 待更新储备金地址
+   * @param liquidityAdded 前次操作中添加到协议的流动性数量（存款或偿还）
+   * @param liquidityTaken 从协议中获取的流动性数量（赎回或借入）
    **/
   function updateInterestRates(
     DataTypes.ReserveData storage reserve,

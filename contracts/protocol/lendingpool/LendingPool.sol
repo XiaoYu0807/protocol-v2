@@ -91,15 +91,14 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
-   * @dev Deposits an `amount` of underlying asset into the reserve, receiving in return overlying aTokens.
-   * - E.g. User deposits 100 USDC and gets in return 100 aUSDC
-   * @param asset The address of the underlying asset to deposit
-   * @param amount The amount to be deposited
-   * @param onBehalfOf The address that will receive the aTokens, same as msg.sender if the user
-   *   wants to receive them on his own wallet, or a different address if the beneficiary of aTokens
-   *   is a different wallet
-   * @param referralCode Code used to register the integrator originating the operation, for potential rewards.
-   *   0 if the action is executed directly by the user, without any middle-man
+   * @dev 将一定数量的标的资产存入储备，并获得相应的 aTokens。
+   * - 例如：用户存入 100 USDC，即可获得 100 aUSDC
+   * @param asset 待存入标的资产的地址
+   * @param amount 需存入的金额
+   * @param onBehalfOf 接收 aTokens 的地址，与 msg.sender 相同，如果用户
+   *  希望通过自己的钱包接收，或者如果 aTokens 的受益人是其他钱包，则希望通过其他地址接收。
+   * @param referralCode 用于注册发起操作的集成商的代码，用于获取潜在奖励。
+   * 如果操作由用户直接执行，无需任何中间人，则为 0
    **/
   function deposit(
     address asset,
@@ -129,15 +128,14 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
   }
 
   /**
-   * @dev Withdraws an `amount` of underlying asset from the reserve, burning the equivalent aTokens owned
-   * E.g. User has 100 aUSDC, calls withdraw() and receives 100 USDC, burning the 100 aUSDC
-   * @param asset The address of the underlying asset to withdraw
-   * @param amount The underlying amount to be withdrawn
-   *   - Send the value type(uint256).max in order to withdraw the whole aToken balance
-   * @param to Address that will receive the underlying, same as msg.sender if the user
-   *   wants to receive it on his own wallet, or a different address if the beneficiary is a
-   *   different wallet
-   * @return The final amount withdrawn
+   * @dev 从储备中提取一定数量的标的资产，并销毁其持有的等值 aToken
+   * 例如，用户有 100 aUSDC，调用withdraw()并收到 100 USDC，销毁这 100 aUSDC
+   * @param asset 待提取标的资产的地址
+   * @param amount 需提取的金额
+   *   - 发送值 type(uint256).max 以提取整个 aToken 余额
+   * @param to 接收标的资产的地址，与 msg.sender 相同，如果用户
+   *   希望通过自己的钱包接收，或者如果资产的受益人是其他钱包，则希望通过其他地址接收。
+   * @return 最终提取金额
    **/
   function withdraw(
     address asset,
